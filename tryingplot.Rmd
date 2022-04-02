@@ -1,0 +1,70 @@
+---
+title: "NEW HW3"
+output: html_document
+date: '2022-03-20'
+---
+---
+title: "HW3"
+output: html_document
+---
+#第一題 
+```{r}
+
+plot(x = mtcars$hp, y = mtcars$mpg ,pch=16 , cex = 1.5,xlab = 'hp',ylab = 'mpg',col = ifelse(mtcars$wt<=2.5,'black', ifelse(mtcars$wt <= 3.5, 'red', 'green')))
+
+```
+    
+#第二題  
+#因為檔案儲存在oneDrive所以library的warning字串Knit出來的時候會是亂碼,用RMD檔開會是正常的,
+執行起來也沒有任何問題!
+```{r}
+#install.packages('quantmod')
+library('quantmod')
+getSymbols('DJI')
+chartSeries(DJI[from="2007-01-03",to="2021-07-01"],theme='white')
+c <- na.omit(DJI)
+ma20<-runMean(c[,4],n=20)  #20天均線
+ma60<-runMean(c[,4],n=60)  #60天均線
+addTA(ma20,on=1,col="blue")
+addTA(ma60,on=1,col="red")
+addADX()
+addRSI()
+```
+
+#第三題  
+#It is possible when y is global variable
+```{r}
+y = 5
+f = function(x){x+2}
+g = function(x,s){x+s(y)}
+g(3,f)
+
+
+
+```
+
+#第四題
+```{r}
+a = 10:15
+x = 12:20
+intersect(a,x)
+x[match(a,x,nomatch = 0)]
+
+```
+
+
+#第五題
+```{r}
+a <- subset(esoph,alcgp=='80-119')
+nrow(a)
+a
+b <- subset(esoph,alcgp=='80-119' & (agegp=='25-34'|agegp=='45-54'|agegp=='65-74'))
+b
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
