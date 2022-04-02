@@ -1,0 +1,2 @@
+# practice-about-Rmarkdown1
+練習用rmarkdown呈現數據及處理資料，knit功能可以很好的作為呈現方式，約6月時會用以此製作一個小project
